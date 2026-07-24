@@ -1124,10 +1124,47 @@
     }
 
     .icon-tiktok {
-      font-family: var(--serif);
-      font-size: clamp(25px, 2.5vw, 37px);
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      font-family: var(--sans);
+      font-size: clamp(27px, 2.7vw, 40px);
+      font-weight: 700;
       line-height: 1;
-      transform: translateY(-2px);
+    }
+
+    .icon-tiktok::before,
+    .icon-tiktok::after {
+      content: "♪";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+
+    .icon-tiktok::before {
+      color: #25f4ee;
+      transform: translate(-56%,-46%);
+    }
+
+    .icon-tiktok::after {
+      color: #fe2c55;
+      transform: translate(-44%,-54%);
+    }
+
+    .icon-tiktok span {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      color: var(--white);
+      font: inherit;
+      letter-spacing: 0;
+    }
+
+    .social-icon:hover .icon-tiktok span,
+    .social-icon:focus-visible .icon-tiktok span {
+      color: var(--ink);
     }
 
     .contact__statement {
@@ -1304,8 +1341,8 @@
         <figcaption><span>SHADOW / DOUBLE EXPOSURE</span><span>SELECTED</span></figcaption>
       </figure>
       <figure class="reel-card">
-        <video autoplay muted loop playsinline preload="metadata" src="assets/selected_pool.mp4"></video>
-        <figcaption><span>POOL / 70S EDITORIAL</span><span>SELECTED</span></figcaption>
+        <video autoplay muted loop playsinline preload="metadata" src="assets/selected_swirl.mp4"></video>
+        <figcaption><span>SWIRLING LIGHT / NEON VORTEX</span><span>SELECTED</span></figcaption>
       </figure>
       <figure class="reel-card">
         <video autoplay muted loop playsinline preload="metadata" src="assets/selected_impulse.mp4"></video>
@@ -1334,11 +1371,11 @@
       </div>
       <div class="btc-transform" aria-label="クリエイティブ映像とモーション解析の比較">
         <figure>
-          <video autoplay muted loop playsinline preload="metadata" src="assets/latest_cyber.mp4"></video>
+          <video id="btcCreative" autoplay muted loop playsinline preload="auto" src="assets/btc_cyber_sync.mp4"></video>
           <figcaption>CREATIVE / CYBER FASHION</figcaption>
         </figure>
         <figure>
-          <video autoplay muted loop playsinline preload="metadata" src="assets/btc_bodykun.mp4"></video>
+          <video id="btcTechnology" autoplay muted loop playsinline preload="auto" src="assets/btc_bodykun_sync.mp4"></video>
           <figcaption>TECHNOLOGY / MOTION DATA</figcaption>
         </figure>
         <div class="btc-transform__bridge">CREATIVE × TECHNOLOGY</div>
@@ -1369,7 +1406,7 @@
 
   <section class="page fdc" id="fdc" data-page="04">
     <div class="fdc__media">
-      <video autoplay muted loop playsinline preload="metadata" src="assets/fdc_oiioii.mp4"></video>
+      <video autoplay muted loop playsinline preload="metadata" src="assets/fdc_thegirl.mp4"></video>
     </div>
     <div class="fdc__copy">
       <div class="running-head">FORWARD DEPLOYED CREATOR</div>
@@ -1481,7 +1518,7 @@
               <span class="icon-youtube" aria-hidden="true"></span>
             </a>
             <a class="social-icon" href="https://www.tiktok.com/@not_fukuda" target="_blank" rel="noreferrer" aria-label="TikTok">
-              <span class="icon-tiktok" aria-hidden="true">♪</span>
+              <span class="icon-tiktok" aria-hidden="true"><span>♪</span></span>
             </a>
           </nav>
         </div>
@@ -1498,6 +1535,8 @@
   const progressBar = document.getElementById("progressBar");
   const currentPage = document.getElementById("currentPage");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const btcCreative = document.getElementById("btcCreative");
+  const btcTechnology = document.getElementById("btcTechnology");
   let ticking = false;
 
   function syncPage() {
@@ -1546,10 +1585,25 @@
     }
   }
 
+  function lockBtcMotion() {
+    if (!reducedMotion.matches && btcCreative.readyState >= 2 && btcTechnology.readyState >= 2 && !btcCreative.paused) {
+      const drift = btcTechnology.currentTime - btcCreative.currentTime;
+      if (Math.abs(drift) > .08) {
+        btcTechnology.currentTime = btcCreative.currentTime;
+        btcTechnology.playbackRate = 1;
+      } else {
+        btcTechnology.playbackRate = Math.max(.94, Math.min(1.06, 1 - drift * .75));
+      }
+      if (btcTechnology.paused) btcTechnology.play().catch(() => {});
+    }
+    requestAnimationFrame(lockBtcMotion);
+  }
+
   window.addEventListener("scroll", requestUpdate, { passive: true });
   window.addEventListener("resize", requestUpdate);
   window.addEventListener("load", updateFrame);
   updateFrame();
+  lockBtcMotion();
 </script>
 </body>
 </html>
