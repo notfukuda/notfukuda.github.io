@@ -75,6 +75,7 @@
       position: absolute;
       top: 22px;
       left: 24px;
+      z-index: 120;
       text-decoration: none;
       pointer-events: auto;
     }
@@ -253,15 +254,17 @@
       top: 8vh;
       left: -1vw;
       right: -1vw;
-      z-index: 2;
+      z-index: 30;
       margin: 0;
+      color: rgba(255,255,255,.94);
       font-family: var(--mincho);
       font-size: clamp(88px, 18vw, 284px);
       font-weight: 500;
       line-height: .72;
       letter-spacing: -.11em;
       white-space: nowrap;
-      mix-blend-mode: difference;
+      text-shadow: 0 3px 30px rgba(0,0,0,.28);
+      pointer-events: none;
     }
 
     .cover__masthead span {
@@ -446,20 +449,9 @@
     }
 
     .btc {
-      min-height: 135svh;
+      min-height: 175svh;
       background: var(--paper);
       color: var(--ink);
-    }
-
-    .btc__video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: .2;
-      filter: grayscale(1) contrast(1.25);
-      mix-blend-mode: multiply;
     }
 
     .btc__content {
@@ -485,10 +477,95 @@
       font-style: normal;
     }
 
+    .btc__expansion {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 5vh;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+    }
+
+    .btc__expansion span {
+      display: flex;
+      align-items: baseline;
+      gap: .12em;
+      padding: 1.6vh 1.2vw 2vh;
+      border-right: 1px solid currentColor;
+      font-family: var(--serif);
+      font-size: clamp(20px, 2.7vw, 42px);
+      line-height: 1;
+      letter-spacing: -.03em;
+    }
+
+    .btc__expansion span:last-child { border-right: 0; }
+
+    .btc__expansion strong {
+      color: var(--blue);
+      font-size: 2.7em;
+      font-weight: 400;
+      line-height: .7;
+    }
+
+    .btc-transform {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 52vh;
+      margin-top: 7vh;
+      overflow: hidden;
+      border: 1px solid currentColor;
+      background: #101010;
+    }
+
+    .btc-transform figure {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .btc-transform figure + figure { border-left: 1px solid var(--paper); }
+
+    .btc-transform video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .btc-transform figcaption {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      padding: 6px 9px;
+      color: var(--white);
+      background: rgba(0,0,0,.72);
+      font-size: 8px;
+      line-height: 1.5;
+      letter-spacing: .16em;
+    }
+
+    .btc-transform__bridge {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 4;
+      transform: translate(-50%,-50%);
+      padding: 10px 16px;
+      color: var(--white);
+      background: var(--blue);
+      font-size: 9px;
+      letter-spacing: .16em;
+      white-space: nowrap;
+      animation: bridge-pulse 2.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes bridge-pulse {
+      to { transform: translate(-50%,-50%) scale(1.06); }
+    }
+
     .btc-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      margin-top: 10vh;
+      margin-top: 7vh;
       border-top: 1px solid currentColor;
       border-bottom: 1px solid currentColor;
     }
@@ -505,14 +582,13 @@
 
     .btc-card__letter {
       position: absolute;
-      right: -1vw;
-      top: -.06em;
-      color: transparent;
+      left: 1.4vw;
+      top: .06em;
+      color: var(--blue);
       font-family: var(--serif);
-      font-size: clamp(170px, 25vw, 390px);
+      font-size: clamp(110px, 13vw, 205px);
       line-height: 1;
-      -webkit-text-stroke: 1px var(--ink);
-      opacity: .18;
+      opacity: .94;
       animation: letter-float 6s ease-in-out infinite alternate;
     }
 
@@ -526,11 +602,14 @@
     .btc-card b {
       position: relative;
       z-index: 2;
+      display: block;
+      margin-left: clamp(76px, 8vw, 130px);
+      padding-top: 2vh;
       color: var(--blue);
       font-family: var(--serif);
-      font-size: 14px;
+      font-size: clamp(18px, 2vw, 30px);
       font-weight: 400;
-      letter-spacing: .16em;
+      letter-spacing: .08em;
     }
 
     .btc-card h3 {
@@ -591,13 +670,44 @@
       font-size: clamp(48px, 7vw, 108px);
     }
 
+    .fdc__copy h2 .fdc-mark {
+      display: block;
+      color: var(--red);
+      font-family: var(--serif);
+      font-size: 1.75em;
+      line-height: .72;
+      letter-spacing: -.06em;
+    }
+
+    .fdc__copy h2 small {
+      display: block;
+      margin-top: 2vh;
+      font-family: var(--sans);
+      font-size: .25em;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
     .fdc__copy h2 em {
       color: var(--red);
       font-style: normal;
     }
 
+    .fdc__origin {
+      margin: 5vh 0 0;
+      padding: 2.3vh 0 2.3vh 22px;
+      border-left: 4px solid var(--red);
+      font-family: var(--mincho);
+      font-size: clamp(17px, 1.7vw, 25px);
+      line-height: 1.9;
+    }
+
+    .fdc__origin b { color: var(--red); }
+
     .fdc__definition {
-      margin: 7vh 0 0;
+      margin: 5vh 0 0;
       padding: 3vh 0;
       border-top: 1px solid var(--rule-light);
       border-bottom: 1px solid var(--rule-light);
@@ -605,6 +715,34 @@
       font-size: clamp(16px, 1.55vw, 23px);
       line-height: 2;
     }
+
+    .fdc__definition b {
+      display: inline-block;
+      margin-bottom: .7em;
+      color: var(--red);
+      font-family: var(--sans);
+      font-size: .76em;
+      letter-spacing: .12em;
+    }
+
+    .fdc__meaning {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 3vh;
+      border-top: 1px solid var(--rule-light);
+      border-bottom: 1px solid var(--rule-light);
+    }
+
+    .fdc__meaning span {
+      padding: 2.2vh 1vw;
+      border-right: 1px solid var(--rule-light);
+      font-family: var(--mincho);
+      font-size: clamp(14px, 1.2vw, 18px);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .fdc__meaning span:last-child { border-right: 0; }
 
     .fdc__not {
       margin-top: 5vh;
@@ -635,7 +773,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      width: 42%;
+      width: 38%;
       height: 100%;
       object-fit: cover;
       filter: grayscale(1) contrast(1.1);
@@ -645,71 +783,99 @@
     .seeing__copy {
       position: relative;
       z-index: 2;
-      margin-left: 42%;
-      padding: 14vh 5vw 10vh;
+      margin-left: 38%;
+      padding: 14vh 4vw 10vh;
     }
 
-    .seeing__copy h2 {
-      font-size: clamp(48px, 7.3vw, 116px);
+    .seeing__copy h2.seeing__thesis {
+      margin-top: 4vh;
+      font-family: var(--sans);
+      font-size: clamp(42px, 6.2vw, 96px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -.065em;
     }
 
-    .seeing__copy h2 em {
+    .seeing__thesis em {
       color: var(--red);
       font-style: normal;
     }
 
-    .process {
-      margin-top: 9vh;
-      border-top: 1px solid currentColor;
+    .seeing__lead {
+      margin: 6vh 0 0;
+      font-family: var(--mincho);
+      font-size: clamp(28px, 3.7vw, 56px);
+      line-height: 1.4;
+      letter-spacing: -.035em;
     }
 
-    .process__row {
+    .seeing__principle {
+      margin: 2vh 0 0;
+      color: var(--red);
+      font-family: var(--mincho);
+      font-size: clamp(20px, 2.2vw, 34px);
+      line-height: 1.6;
+    }
+
+    .framework {
       display: grid;
-      grid-template-columns: 58px 1fr auto;
-      gap: 2vw;
-      align-items: baseline;
-      padding: 2.8vh 0;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 6vh;
+      border-top: 1px solid currentColor;
       border-bottom: 1px solid currentColor;
+    }
+
+    .framework__step {
+      padding: 2.5vh 1.3vw 3vh;
+      border-right: 1px solid currentColor;
       opacity: 0;
-      transform: translateX(34px);
+      transform: translateY(28px);
       transition: opacity .7s ease, transform .85s ease;
     }
 
-    .is-active .process__row {
+    .framework__step:last-child { border-right: 0; }
+
+    .is-active .framework__step {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
 
-    .is-active .process__row:nth-child(2) { transition-delay: .08s; }
-    .is-active .process__row:nth-child(3) { transition-delay: .16s; }
-    .is-active .process__row:nth-child(4) { transition-delay: .24s; }
-    .is-active .process__row:nth-child(5) { transition-delay: .32s; }
-    .is-active .process__row:nth-child(6) { transition-delay: .40s; }
+    .is-active .framework__step:nth-child(2) { transition-delay: .12s; }
+    .is-active .framework__step:nth-child(3) { transition-delay: .24s; }
 
-    .process__row b {
+    .framework__step b {
+      display: block;
       color: var(--red);
       font-family: var(--serif);
-      font-size: 24px;
+      font-size: clamp(42px, 5vw, 72px);
       font-weight: 400;
+      line-height: 1;
     }
 
-    .process__row strong {
+    .framework__step h3 {
+      margin: 2vh 0 0;
       font-family: var(--mincho);
-      font-size: clamp(23px, 2.6vw, 40px);
+      font-size: clamp(19px, 1.8vw, 28px);
       font-weight: 500;
-    }
-
-    .process__row span {
-      font-size: 9px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-
-    .seeing__conclusion {
-      margin: 7vh 0 0;
-      font-family: var(--mincho);
-      font-size: clamp(24px, 3.3vw, 52px);
       line-height: 1.5;
+    }
+
+    .framework__step p {
+      margin: 1.5vh 0 0;
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .framework__result {
+      margin: 5vh 0 0;
+      font-family: var(--mincho);
+      font-size: clamp(22px, 2.7vw, 42px);
+      line-height: 1.5;
+    }
+
+    .framework__result em {
+      color: var(--red);
+      font-style: normal;
     }
 
     .menu {
@@ -882,9 +1048,32 @@
       .page { min-height: 100svh; }
       .running-head::before,
       .running-head::after { width: 26px; }
-      .cover { padding: 21vh 22px 9vh; }
-      .cover__masthead { top: 12vh; left: -7px; font-size: 24vw; }
-      .cover__copy h2 { font-size: 12vw; }
+      .cover {
+        padding: 21vh 22px 9vh;
+        box-shadow: inset 0 0 0 10px rgba(255,255,255,.72);
+      }
+      .cover__video {
+        object-position: 14% center;
+        transform: scale(1.01);
+        animation-name: cover-breathe-mobile;
+      }
+      @keyframes cover-breathe-mobile {
+        to { transform: scale(1.045) translateX(1.2%); }
+      }
+      .cover__veil {
+        background:
+          linear-gradient(90deg, rgba(0,0,0,.34), rgba(0,0,0,.04) 74%),
+          linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.72));
+      }
+      .cover__masthead {
+        top: 12vh;
+        left: 12px;
+        right: 12px;
+        font-size: 23vw;
+        letter-spacing: -.14em;
+      }
+      .cover__copy { width: 86vw; }
+      .cover__copy h2 { font-size: 11.5vw; }
       .latest { padding: 14vh 10px 8vh; }
       .latest__headline { grid-template-columns: 1fr; }
       .latest__headline p { width: 80vw; }
@@ -893,16 +1082,43 @@
       .latest__claims { grid-template-columns: 1fr 1fr; }
       .claim { min-height: 20vh; border-bottom: 1px solid var(--rule-light); }
       .btc__content { padding: 14vh 22px 9vh; }
+      .btc__expansion { grid-template-columns: 1fr; }
+      .btc__expansion span {
+        padding: 1.8vh 8px;
+        border-right: 0;
+        border-bottom: 1px solid currentColor;
+        font-size: 7.2vw;
+      }
+      .btc__expansion span:last-child { border-bottom: 0; }
+      .btc-transform { height: 38svh; }
+      .btc-transform figcaption {
+        left: 6px;
+        bottom: 6px;
+        max-width: calc(100% - 12px);
+        padding: 4px 6px;
+        font-size: 6px;
+      }
+      .btc-transform__bridge {
+        padding: 8px 9px;
+        font-size: 6px;
+      }
       .btc-grid { grid-template-columns: 1fr; }
       .btc-card { min-height: 34vh; border-right: 0; border-bottom: 1px solid currentColor; }
-      .btc-card h3 { margin-top: 11vh; }
+      .btc-card__letter { left: 8px; font-size: 34vw; }
+      .btc-card b { margin-left: 24vw; padding-top: 3vh; font-size: 6.4vw; }
+      .btc-card h3 { margin-top: 12vh; }
       .fdc { grid-template-columns: 1fr; grid-template-rows: 45svh auto; }
       .fdc__media { border-right: 0; border-bottom: 1px solid var(--rule-light); }
       .fdc__copy { padding: 9vh 22px; }
+      .fdc__meaning { grid-template-columns: 1fr; }
+      .fdc__meaning span { border-right: 0; border-bottom: 1px solid var(--rule-light); }
+      .fdc__meaning span:last-child { border-bottom: 0; }
       .seeing__video { position: relative; width: 100%; height: 46svh; }
       .seeing__copy { margin-left: 0; padding: 9vh 22px; }
-      .process__row { grid-template-columns: 44px 1fr; }
-      .process__row span { grid-column: 2; }
+      .seeing__copy h2.seeing__thesis { font-size: 10.7vw; }
+      .framework { grid-template-columns: 1fr; }
+      .framework__step { padding: 2.7vh 0; border-right: 0; border-bottom: 1px solid currentColor; }
+      .framework__step:last-child { border-bottom: 0; }
       .menu { grid-template-columns: 1fr; }
       .menu__copy { padding: 14vh 22px 9vh; }
       .menu__media { height: 68svh; border-left: 0; border-top: 1px solid var(--rule-light); }
@@ -957,20 +1173,20 @@
   </section>
 
   <section class="page latest" id="latest" data-page="02">
-    <div class="running-head">LATEST WORKS / JULY 2026</div>
+    <div class="running-head">SELECTED WORKS / VISUAL ARCHIVE</div>
     <header class="latest__headline">
-      <h2>Latest<br>Reel</h2>
-      <p>新しい技術を、まず作品にする。人物、街、紙、衣装、群像、アクション。最新作を中心に、違う種類の動画を同時に動かしています。</p>
+      <h2>Selected<br>Reel</h2>
+      <p>新しさではなく、視覚表現として残るものを。これまでの制作から、私の眼と表現を最も強く伝える代表作を選びました。</p>
     </header>
 
-    <div class="video-wall" aria-label="最新動画作品">
+    <div class="video-wall" aria-label="代表動画作品">
       <figure class="reel-card">
         <video autoplay muted loop playsinline preload="metadata" src="assets/latest_zine.mp4"></video>
         <figcaption><span>ZINE VIDEO</span><span>2026.07</span></figcaption>
       </figure>
       <figure class="reel-card">
-        <video autoplay muted loop playsinline preload="metadata" src="assets/latest_osharenger.mp4"></video>
-        <figcaption><span>10 RANGERS</span><span>2026.07</span></figcaption>
+        <video autoplay muted loop playsinline preload="metadata" src="assets/selected_waterflower.mp4"></video>
+        <figcaption><span>UNDERWATER FLOWERS</span><span>SELECTED</span></figcaption>
       </figure>
       <figure class="reel-card">
         <video autoplay muted loop playsinline preload="metadata" src="assets/latest_kimono_skate.mp4"></video>
@@ -985,16 +1201,16 @@
         <figcaption><span>OIRAN RAP</span><span>2026.07</span></figcaption>
       </figure>
       <figure class="reel-card">
-        <video autoplay muted loop playsinline preload="metadata" src="assets/latest_trump.mp4"></video>
-        <figcaption><span>MIRROR LAG</span><span>2026.07</span></figcaption>
+        <video autoplay muted loop playsinline preload="metadata" src="assets/selected_shadow.mp4"></video>
+        <figcaption><span>SHADOW / DOUBLE EXPOSURE</span><span>SELECTED</span></figcaption>
       </figure>
       <figure class="reel-card">
-        <video autoplay muted loop playsinline preload="metadata" src="assets/latest_six.mp4"></video>
-        <figcaption><span>SIX / ENSEMBLE</span><span>2026.06</span></figcaption>
+        <video autoplay muted loop playsinline preload="metadata" src="assets/selected_pool.mp4"></video>
+        <figcaption><span>POOL / 70S EDITORIAL</span><span>SELECTED</span></figcaption>
       </figure>
       <figure class="reel-card">
-        <video autoplay muted loop playsinline preload="metadata" src="assets/latest_nobok_birthday.mp4"></video>
-        <figcaption><span>NOBOK 46</span><span>2026.07</span></figcaption>
+        <video autoplay muted loop playsinline preload="metadata" src="assets/selected_impulse.mp4"></video>
+        <figcaption><span>IMPULSE / FLOWER EXPLOSION</span><span>SELECTED</span></figcaption>
       </figure>
     </div>
 
@@ -1008,11 +1224,26 @@
   </section>
 
   <section class="page page--paper btc" id="btc" data-page="03">
-    <video class="btc__video" autoplay muted loop playsinline preload="metadata" src="assets/btc_bodykun.mp4"></video>
     <div class="running-head">BUSINESS × TECHNOLOGY × CREATIVE</div>
     <div class="btc__content">
       <div class="eyebrow">THREE CAPITALS / ONE PERSON</div>
       <h2>私は、数少ない<br><em>BTC人材</em>です。</h2>
+      <div class="btc__expansion" aria-label="BTCの意味">
+        <span><strong>B</strong>usiness</span>
+        <span><strong>T</strong>echnology</span>
+        <span><strong>C</strong>reative</span>
+      </div>
+      <div class="btc-transform" aria-label="クリエイティブ映像とモーション解析の比較">
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata" src="assets/latest_osharenger.mp4"></video>
+          <figcaption>CREATIVE / ORIGINAL MOVEMENT</figcaption>
+        </figure>
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata" src="assets/btc_bodykun.mp4"></video>
+          <figcaption>TECHNOLOGY / MOTION DATA</figcaption>
+        </figure>
+        <div class="btc-transform__bridge">CREATIVE × TECHNOLOGY</div>
+      </div>
       <div class="btc-grid">
         <article class="btc-card">
           <span class="btc-card__letter" aria-hidden="true">B</span>
@@ -1039,16 +1270,27 @@
 
   <section class="page fdc" id="fdc" data-page="04">
     <div class="fdc__media">
-      <video autoplay muted loop playsinline preload="metadata" src="assets/fdc_oiioii.mp4"></video>
+      <video autoplay muted loop playsinline preload="metadata" src="assets/fdc_smoke.mp4"></video>
     </div>
     <div class="fdc__copy">
       <div class="running-head">FORWARD DEPLOYED CREATOR</div>
-      <div class="eyebrow">A NEW CREATIVE PROFESSION</div>
-      <h2>日本初の<br><em>FDC事業者</em>です。</h2>
-      <p class="fdc__definition">
-        <b>FDC = Forward Deployed Creator</b><br>
-        顧客の業務現場に深く入り込み、私のクリエイティブスキルを顧客ごとに最適化した形で、実際に使える形に実装・運用・定着させるクリエイティブ職です。
+      <div class="eyebrow">THE CREATIVE VERSION OF FDE</div>
+      <h2><span class="fdc-mark">FDC</span><small>Forward Deployed Creator</small></h2>
+      <p class="fdc__origin">
+        アメリカでは、顧客の現場に入り技術を実装する<br>
+        <b>FDE = Forward Deployed Engineer</b> が広がっています。<br>
+        その<strong>クリエイティブ版</strong>を、私がやります。
       </p>
+      <p class="fdc__definition">
+        <b>FDCを日本語で言うと</b><br>
+        顧客の業務現場に深く入り、クリエイティブの技術を顧客ごとの仕事に合わせて組み替え、実際に使い続けられる状態まで実装・運用・定着させる人です。
+      </p>
+      <div class="fdc__meaning" aria-label="FDCの仕事">
+        <span>現場に<br>深く入る</span>
+        <span>顧客仕様に<br>組み替える</span>
+        <span>使える形まで<br>定着させる</span>
+      </div>
+      <p class="fdc__not">日本初の、<span>FDC事業者</span>です。</p>
       <p class="fdc__not">「コンサル」とは、<span>全く別業種</span>です。</p>
       <p class="fdc__not">私レベルのクリエイティブを、<br>貴社で内製化できます。</p>
     </div>
@@ -1059,17 +1301,28 @@
     <video class="seeing__video" autoplay muted loop playsinline preload="metadata" src="assets/seeing_hitofude.mp4"></video>
     <div class="running-head">THE ENGINEERING OF EXPRESSION</div>
     <div class="seeing__copy">
-      <div class="eyebrow">CREATIVE METHOD / SYSTEMIZED</div>
-      <h2>つくることの<br>ほとんどは、<em>見ること</em>です。</h2>
-      <div class="process" aria-label="クリエイティブプロセス">
-        <div class="process__row"><b>01</b><strong>見る</strong><span>OBSERVE</span></div>
-        <div class="process__row"><b>02</b><strong>ほぐす</strong><span>UNTANGLE</span></div>
-        <div class="process__row"><b>03</b><strong>フレームを見つける</strong><span>FIND THE FRAME</span></div>
-        <div class="process__row"><b>04</b><strong>フレームからズラす</strong><span>SHIFT</span></div>
-        <div class="process__row"><b>05</b><strong>意味を創出する</strong><span>CREATE MEANING</span></div>
-        <div class="process__row"><b>06</b><strong>新しい表現</strong><span>NEW EXPRESSION</span></div>
+      <div class="eyebrow">FUKUDA'S FRAMEWORK THEORY</div>
+      <h2 class="seeing__thesis">アイデアとは、<br><em>10割</em>のフレームワークを見て、<br><em>1割か2割</em>ハズす。</h2>
+      <p class="seeing__lead">つくることのほとんどは、<br>見ることです。</p>
+      <p class="seeing__principle">クリエイティブとは、フレームワークの理解が全て。</p>
+      <div class="framework" aria-label="福田京平のフレームワーク理論">
+        <article class="framework__step">
+          <b>10/10</b>
+          <h3>まず、全部見る。</h3>
+          <p>そのテーマの定石、構図、光、色、時代性、動き。参考例を集めるのではなく、何がその表現を成立させているかを「文法」として理解します。</p>
+        </article>
+        <article class="framework__step">
+          <b>8–9/10</b>
+          <h3>分かる部分は、残す。</h3>
+          <p>フレームワークの大部分に従うから、見る人は瞬時に意味を読めます。新しさの前に、ファッションとして成立する土台を守ります。</p>
+        </article>
+        <article class="framework__step">
+          <b>1–2/10</b>
+          <h3>どこをハズすか、選ぶ。</h3>
+          <p>外から奇抜さを足すのではなく、理解した規則の中から一つか二つだけ破る。物理、時間、材質まで選択的にズラし、新しい意味を生みます。</p>
+        </article>
       </div>
-      <p class="seeing__conclusion">この往復を、完全に仕組み化しました。</p>
+      <p class="framework__result">着地は、<em>「0.5歩先の普通」</em>。<br>新しくて、オシャレ。その判断までを仕組み化しています。</p>
     </div>
     <div class="page-no">008–009</div>
   </section>
