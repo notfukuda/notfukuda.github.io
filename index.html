@@ -1017,7 +1017,8 @@
       border-top: 1px solid var(--white);
     }
 
-    .contact__details a {
+    .contact__details > a,
+    .contact__handle {
       display: block;
       font-family: var(--mincho);
       font-size: clamp(20px, 2.7vw, 42px);
@@ -1025,12 +1026,108 @@
       text-decoration: none;
     }
 
-    .contact__details span {
+    .contact__details > a > span,
+    .contact__handle > span {
       display: block;
       margin-bottom: 7px;
       font-family: var(--sans);
       font-size: 9px;
       letter-spacing: .18em;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 2.2vh;
+    }
+
+    .social-icon {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: clamp(44px, 4.2vw, 62px);
+      aspect-ratio: 1;
+      overflow: hidden;
+      border: 1px solid var(--white);
+      color: var(--white);
+      background: rgba(0,0,0,.18);
+      text-decoration: none;
+      transition: color .25s ease, background .25s ease, transform .25s ease;
+    }
+
+    .social-icon:nth-child(2) { transform: translateY(5px); }
+    .social-icon:nth-child(3) { transform: translateY(-3px); }
+    .social-icon:nth-child(4) { transform: translateY(3px); }
+
+    .social-icon:hover,
+    .social-icon:focus-visible {
+      color: var(--ink);
+      background: var(--acid);
+      transform: translateY(-5px) rotate(-2deg);
+      outline: 0;
+    }
+
+    .social-icon--x {
+      font-family: var(--sans);
+      font-size: clamp(18px, 1.8vw, 27px);
+      font-weight: 500;
+    }
+
+    .icon-instagram {
+      position: relative;
+      width: 43%;
+      aspect-ratio: 1;
+      border: 1.5px solid currentColor;
+      border-radius: 28%;
+    }
+
+    .icon-instagram::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 38%;
+      aspect-ratio: 1;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .icon-instagram::after {
+      content: "";
+      position: absolute;
+      right: 15%;
+      top: 15%;
+      width: 10%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .icon-youtube {
+      position: relative;
+      width: 54%;
+      height: 38%;
+      border: 1.5px solid currentColor;
+      border-radius: 28% / 42%;
+    }
+
+    .icon-youtube::after {
+      content: "";
+      position: absolute;
+      left: 52%;
+      top: 50%;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 8px solid currentColor;
+      transform: translate(-50%,-50%);
+    }
+
+    .icon-tiktok {
+      font-family: var(--serif);
+      font-size: clamp(25px, 2.5vw, 37px);
+      line-height: 1;
+      transform: translateY(-2px);
     }
 
     .contact__statement {
@@ -1126,6 +1223,8 @@
       .contact { padding: 16vh 22px 10vh; }
       .contact__details { grid-template-columns: 1fr; }
       .contact h2 { font-size: 26vw; }
+      .social-icons { margin-top: 18px; }
+      .social-icon { width: 48px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1193,8 +1292,8 @@
         <figcaption><span>KIMONO SKATE</span><span>2026.07</span></figcaption>
       </figure>
       <figure class="reel-card">
-        <video autoplay muted loop playsinline preload="metadata" src="assets/latest_cyber.mp4"></video>
-        <figcaption><span>CYBER FASHION</span><span>2026.07</span></figcaption>
+        <video autoplay muted loop playsinline preload="metadata" src="assets/latest_osharenger.mp4"></video>
+        <figcaption><span>10 RANGERS</span><span>2026.07</span></figcaption>
       </figure>
       <figure class="reel-card">
         <video autoplay muted loop playsinline preload="metadata" src="assets/latest_oiran_rap.mp4"></video>
@@ -1235,8 +1334,8 @@
       </div>
       <div class="btc-transform" aria-label="クリエイティブ映像とモーション解析の比較">
         <figure>
-          <video autoplay muted loop playsinline preload="metadata" src="assets/latest_osharenger.mp4"></video>
-          <figcaption>CREATIVE / ORIGINAL MOVEMENT</figcaption>
+          <video autoplay muted loop playsinline preload="metadata" src="assets/latest_cyber.mp4"></video>
+          <figcaption>CREATIVE / CYBER FASHION</figcaption>
         </figure>
         <figure>
           <video autoplay muted loop playsinline preload="metadata" src="assets/btc_bodykun.mp4"></video>
@@ -1270,7 +1369,7 @@
 
   <section class="page fdc" id="fdc" data-page="04">
     <div class="fdc__media">
-      <video autoplay muted loop playsinline preload="metadata" src="assets/fdc_smoke.mp4"></video>
+      <video autoplay muted loop playsinline preload="metadata" src="assets/fdc_oiioii.mp4"></video>
     </div>
     <div class="fdc__copy">
       <div class="running-head">FORWARD DEPLOYED CREATOR</div>
@@ -1369,7 +1468,23 @@
     <div class="contact__inner">
       <h2>Contact</h2>
       <div class="contact__details">
-        <a href="https://x.com/not_fukuda" rel="noreferrer"><span>ALL SNS</span>@not_fukuda</a>
+        <div class="contact__social">
+          <a class="contact__handle" href="https://x.com/not_fukuda" target="_blank" rel="noreferrer"><span>ALL SNS</span>@not_fukuda</a>
+          <nav class="social-icons" aria-label="SNS links">
+            <a class="social-icon social-icon--x" href="https://x.com/not_fukuda" target="_blank" rel="noreferrer" aria-label="X">
+              <span aria-hidden="true">X</span>
+            </a>
+            <a class="social-icon" href="https://www.instagram.com/not_fukuda/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <span class="icon-instagram" aria-hidden="true"></span>
+            </a>
+            <a class="social-icon" href="https://www.youtube.com/@not_fukuda" target="_blank" rel="noreferrer" aria-label="YouTube">
+              <span class="icon-youtube" aria-hidden="true"></span>
+            </a>
+            <a class="social-icon" href="https://www.tiktok.com/@not_fukuda" target="_blank" rel="noreferrer" aria-label="TikTok">
+              <span class="icon-tiktok" aria-hidden="true">♪</span>
+            </a>
+          </nav>
+        </div>
         <a href="mailto:notfukuda@gmail.com"><span>EMAIL</span>notfukuda@gmail.com</a>
       </div>
       <p class="contact__statement">表現ではなく表現工学が、<br>私の仕事です。</p>
