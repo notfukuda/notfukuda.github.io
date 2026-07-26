@@ -346,8 +346,55 @@
       letter-spacing: -.065em;
     }
 
-    .latest__headline p {
+    .latest__intro {
       width: min(330px, 27vw);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .latest__more {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      min-height: 42px;
+      padding: 0 14px 0 16px;
+      border: 1px solid rgba(255,255,255,.72);
+      color: var(--white);
+      background: rgba(255,255,255,.045);
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: .16em;
+      text-decoration: none;
+      transition: color .25s ease, background .25s ease, border-color .25s ease;
+    }
+
+    .latest__more::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      flex: 0 0 auto;
+      background: var(--red);
+    }
+
+    .latest__more::after {
+      content: "↗";
+      font-size: 15px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .latest__more:hover,
+    .latest__more:focus-visible {
+      color: var(--ink);
+      background: var(--white);
+      border-color: var(--white);
+      outline: 0;
+    }
+
+    .latest__headline p {
+      width: 100%;
       margin: 0;
       font-family: var(--mincho);
       font-size: 13px;
@@ -1313,7 +1360,8 @@
       .cover__copy h2 { font-size: 11.5vw; }
       .latest { padding: 14vh 10px 8vh; }
       .latest__headline { grid-template-columns: 1fr; }
-      .latest__headline p { width: 80vw; }
+      .latest__intro { width: 80vw; gap: 16px; }
+      .latest__more { min-height: 46px; }
       .video-wall { grid-template-columns: 1fr 1fr; grid-auto-rows: 31vh; }
       .reel-card:nth-child(n) { grid-column: auto; grid-row: auto; }
       .reel-play {
@@ -1426,7 +1474,10 @@
     <div class="running-head">SELECTED WORKS / VISUAL ARCHIVE</div>
     <header class="latest__headline">
       <h2>Selected<br>Reel</h2>
-      <p>新しさではなく、視覚表現として残るものを。これまでの制作から、私の眼と表現を最も強く伝える代表作を選びました。</p>
+      <div class="latest__intro">
+        <a class="latest__more" href="https://www.behance.net/gallery/234043473/AI-Video-Kyohei-Fukuda-Portfolio" target="_blank" rel="noreferrer">Other My Videos</a>
+        <p>新しさではなく、視覚表現として残るものを。これまでの制作から、私の眼と表現を最も強く伝える代表作を選びました。</p>
+      </div>
     </header>
 
     <div class="video-wall" aria-label="代表動画作品">
