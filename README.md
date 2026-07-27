@@ -4,4 +4,4 @@
 
 「常に動くHP」を主役にしながら、スクロールすると雑誌の編集文法が見えてくる「動く雑誌」として設計しています。
 
-公開URL: https://notfukuda.github.io/
+公開URL: https://notfukuda.com/
