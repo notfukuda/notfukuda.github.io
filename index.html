@@ -117,7 +117,7 @@
 
     .chapter-nav__line i {
       display: block;
-      width: 14.285%;
+      width: 12.5%;
       height: 100%;
       background: #fff;
       transition: width .45s ease;
@@ -319,6 +319,329 @@
     @keyframes pulse-line {
       0%, 100% { transform: scaleY(.22); opacity: .35; }
       50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    .fashion-feature {
+      min-height: 100svh;
+      color: var(--ink);
+      background: #e9e4da;
+      border-color: var(--rule-dark);
+    }
+
+    .fashion-feature__link {
+      position: absolute;
+      inset: 0;
+      display: block;
+      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .fashion-feature__link:focus-visible {
+      outline: 4px solid var(--blue);
+      outline-offset: -8px;
+    }
+
+    .fashion-feature__grid {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0 24.9%, rgba(10,10,10,.12) 25% 25.08%, transparent 25.1% 74.9%, rgba(10,10,10,.12) 75% 75.08%, transparent 75.1%),
+        linear-gradient(180deg, transparent 0 49.9%, rgba(10,10,10,.12) 50% 50.08%, transparent 50.1%);
+      pointer-events: none;
+    }
+
+    .fashion-feature__signal {
+      position: absolute;
+      top: 18vh;
+      right: -5vw;
+      width: 44vw;
+      height: 42vh;
+      background: var(--red);
+      transform: skewX(-9deg) rotate(-2deg);
+      animation: fashion-signal 5.5s cubic-bezier(.45,0,.2,1) infinite alternate;
+    }
+
+    @keyframes fashion-signal {
+      from { transform: translate3d(0,0,0) skewX(-9deg) rotate(-2deg); }
+      to { transform: translate3d(-5vw,4vh,0) skewX(5deg) rotate(2deg); }
+    }
+
+    .fashion-feature__content {
+      position: relative;
+      z-index: 3;
+      min-height: 100svh;
+      padding: 12vh 4vw 8vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .fashion-feature__kicker {
+      margin: 0;
+      font-size: 9px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    .fashion-feature__name {
+      position: relative;
+      z-index: 2;
+      margin: auto 0 5vh;
+      font-family: var(--serif);
+      font-size: clamp(92px, 16vw, 250px);
+      font-weight: 400;
+      line-height: .72;
+      letter-spacing: -.09em;
+      white-space: nowrap;
+      transition: transform .7s cubic-bezier(.2,.75,.2,1);
+    }
+
+    .fashion-feature__name em {
+      color: var(--blue);
+      font-weight: 400;
+    }
+
+    .fashion-feature__name sup {
+      display: inline-block;
+      margin-left: .08em;
+      font-family: var(--sans);
+      font-size: .07em;
+      letter-spacing: 0;
+      vertical-align: top;
+    }
+
+    .fashion-feature__lower {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 5vw;
+      align-items: end;
+      border-top: 1px solid currentColor;
+      padding-top: 3vh;
+    }
+
+    .fashion-feature__title {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: clamp(34px, 5.4vw, 86px);
+      font-weight: 700;
+      line-height: .92;
+      letter-spacing: -.065em;
+    }
+
+    .fashion-feature__copy {
+      margin: 1.4vh 0 0;
+      font-family: var(--mincho);
+      font-size: clamp(14px, 1.35vw, 21px);
+      line-height: 1.65;
+      letter-spacing: .02em;
+    }
+
+    .fashion-feature__cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      min-width: 290px;
+      min-height: 72px;
+      padding: 0 22px;
+      border: 1px solid currentColor;
+      background: rgba(233,228,218,.72);
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      transition: color .25s ease, background .25s ease, transform .25s ease;
+    }
+
+    .fashion-feature__cta::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--red);
+    }
+
+    .fashion-feature__cta b {
+      margin-left: auto;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .fashion-feature__vertical {
+      position: absolute;
+      top: 13vh;
+      right: 24px;
+      z-index: 4;
+      font-size: 8px;
+      letter-spacing: .22em;
+      writing-mode: vertical-rl;
+    }
+
+    .fashion-feature__link:hover .fashion-feature__name {
+      transform: translateX(1.8vw);
+    }
+
+    .fashion-feature__link:hover .fashion-feature__cta,
+    .fashion-feature__link:focus-visible .fashion-feature__cta {
+      color: #e9e4da;
+      background: var(--ink);
+      transform: translateY(-4px);
+    }
+
+    .fashion-feature {
+      min-height: 108svh;
+      color: var(--white);
+      background: #050505;
+      border-color: var(--rule-light);
+    }
+
+    .fashion-feature__link {
+      display: grid;
+      grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+      background: #050505;
+    }
+
+    .fashion-feature__media {
+      position: relative;
+      grid-column: 2;
+      grid-row: 1;
+      min-width: 0;
+      overflow: hidden;
+      border-left: 1px solid rgba(255,255,255,.34);
+    }
+
+    .fashion-feature__media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.86) contrast(1.05);
+      transform: scale(1.015);
+      transition: transform 1.4s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+    }
+
+    .fashion-feature__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5,5,5,.28), transparent 34%),
+        linear-gradient(180deg, transparent 68%, rgba(5,5,5,.48));
+      pointer-events: none;
+    }
+
+    .fashion-feature__media-label {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.7);
+      font-size: 8px;
+      letter-spacing: .18em;
+    }
+
+    .fashion-feature__copy-area {
+      position: relative;
+      z-index: 3;
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 12vh 3.5vw 8vh;
+      overflow: hidden;
+    }
+
+    .fashion-feature__copy-area::before {
+      content: "";
+      position: absolute;
+      top: 18vh;
+      left: -12vw;
+      z-index: -1;
+      width: 34vw;
+      height: 11vh;
+      background: var(--red);
+      transform: rotate(-5deg);
+      animation: fashion-bar 5.5s cubic-bezier(.45,0,.2,1) infinite alternate;
+    }
+
+    @keyframes fashion-bar {
+      to { transform: translateX(9vw) rotate(3deg); }
+    }
+
+    .fashion-feature__brand {
+      margin: 4vh 0 0;
+      font-family: var(--serif);
+      font-size: clamp(60px, 7vw, 114px);
+      font-weight: 400;
+      line-height: .8;
+      letter-spacing: -.07em;
+    }
+
+    .fashion-feature__brand em {
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    .fashion-feature__headline-jp {
+      position: relative;
+      margin: auto 0;
+      font-family: var(--mincho);
+      font-size: clamp(48px, 5.8vw, 94px);
+      font-weight: 500;
+      line-height: .94;
+      letter-spacing: -.065em;
+    }
+
+    .fashion-feature__headline-jp span {
+      display: inline-block;
+      color: var(--red);
+      font-family: var(--sans);
+      font-weight: 700;
+      transform: skewX(-7deg);
+    }
+
+    .fashion-feature__season {
+      padding-top: 2.2vh;
+      border-top: 1px solid rgba(255,255,255,.65);
+    }
+
+    .fashion-feature__season b {
+      display: block;
+      font-family: var(--sans);
+      font-size: clamp(25px, 3vw, 48px);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+
+    .fashion-feature__season p {
+      margin: 10px 0 22px;
+      font-family: var(--mincho);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .fashion-feature__cta {
+      min-width: 0;
+      min-height: 58px;
+      color: var(--white);
+      background: transparent;
+      border-color: rgba(255,255,255,.72);
+    }
+
+    .fashion-feature__link:hover .fashion-feature__media video {
+      filter: saturate(1) contrast(1.08);
+      transform: scale(1.055);
+    }
+
+    .fashion-feature__link:hover .fashion-feature__cta,
+    .fashion-feature__link:focus-visible .fashion-feature__cta {
+      color: var(--ink);
+      background: var(--white);
     }
 
     .latest {
@@ -1358,6 +1681,46 @@
       }
       .cover__copy { width: 86vw; }
       .cover__copy h2 { font-size: 11.5vw; }
+      .fashion-feature { min-height: 112svh; }
+      .fashion-feature__link {
+        grid-template-columns: 1fr;
+        grid-template-rows: 42svh 1fr;
+      }
+      .fashion-feature__media {
+        grid-column: 1;
+        grid-row: 1;
+        border-left: 0;
+        border-bottom: 1px solid rgba(255,255,255,.34);
+      }
+      .fashion-feature__media video { object-position: center 38%; }
+      .fashion-feature__media-label { left: 12px; right: 12px; bottom: 12px; }
+      .fashion-feature__copy-area {
+        grid-column: 1;
+        grid-row: 2;
+        padding: 5.5vh 18px 7vh;
+      }
+      .fashion-feature__copy-area::before {
+        top: 12vh;
+        left: -28vw;
+        width: 88vw;
+        height: 7vh;
+      }
+      .fashion-feature__brand {
+        margin-top: 2.5vh;
+        font-size: 16vw;
+      }
+      .fashion-feature__headline-jp {
+        margin: 4vh 0;
+        font-size: 11.2vw;
+        line-height: .95;
+      }
+      .fashion-feature__season b { font-size: 7.6vw; }
+      .fashion-feature__season p { margin-bottom: 16px; }
+      .fashion-feature__cta {
+        width: 100%;
+        min-width: 0;
+        min-height: 64px;
+      }
       .latest { padding: 14vh 10px 8vh; }
       .latest__headline { grid-template-columns: 1fr; }
       .latest__intro { width: 80vw; gap: 16px; }
@@ -1445,13 +1808,14 @@
   <div class="issue">ISSUE 01<br>2026 / TOKYO</div>
   <div class="chapter-nav" aria-hidden="true">
     <div class="chapter-nav__line"><i id="progressBar"></i></div>
-    <div class="chapter-nav__number"><span id="currentPage">01</span><span>07</span></div>
+    <div class="chapter-nav__number"><span id="currentPage">01</span><span>08</span></div>
   </div>
   <nav class="mini-nav">
     <a href="#latest">WORKS</a>
     <a href="#btc">BTC</a>
     <a href="#fdc">FDC</a>
     <a href="#seeing">METHOD</a>
+    <a href="#fashion">FASHION</a>
     <a href="#menu">MENU</a>
     <a href="#contact">CONTACT</a>
   </nav>
@@ -1629,7 +1993,31 @@
     <div class="page-no">008–009</div>
   </section>
 
-  <section class="page menu" id="menu" data-page="06">
+  <section class="page fashion-feature" id="fashion" data-page="06">
+    <a class="fashion-feature__link" href="/notfukuda-fashion/" aria-label="架空のファッションブランド notfukuda のホームページを見る">
+      <div class="running-head">FICTIONAL FASHION LABEL / SPECIAL FEATURE</div>
+      <div class="fashion-feature__copy-area">
+        <p class="fashion-feature__kicker">A NEW PROJECT BY KYOHEI FUKUDA</p>
+        <p class="fashion-feature__brand"><em>not</em>fukuda®</p>
+        <h2 class="fashion-feature__headline-jp"><span>架空の</span><br>ファッション<br>ブランドのHP</h2>
+        <div class="fashion-feature__season">
+          <b>PRIVATE HOURS.</b>
+          <p>着飾るのは、予定のためだけじゃない。<br>自分の時間に、着たい服を。</p>
+          <span class="fashion-feature__cta">ブランドHPを見る <b aria-hidden="true">↗</b></span>
+        </div>
+      </div>
+      <div class="fashion-feature__media">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/fashion-private-hours.webp">
+          <source media="(max-width: 760px)" src="assets/fashion-private-hours-640.mp4" type="video/mp4">
+          <source src="assets/fashion-private-hours.mp4" type="video/mp4">
+        </video>
+        <span class="fashion-feature__media-label"><span>2026 A/W COLLECTION</span><span>OFF STANDARD</span></span>
+      </div>
+    </a>
+    <div class="page-no">010–011</div>
+  </section>
+
+  <section class="page menu" id="menu" data-page="07">
     <div class="running-head">SERVICES / MENU</div>
     <div class="menu__copy">
       <div class="eyebrow">WORK WITH FUKUDA KYOHEI</div>
@@ -1661,10 +2049,10 @@
     <div class="menu__media">
       <video autoplay muted loop playsinline preload="metadata" src="assets/menu_modest.mp4"></video>
     </div>
-    <div class="page-no">010–011</div>
+    <div class="page-no">012–013</div>
   </section>
 
-  <section class="page contact" id="contact" data-page="07">
+  <section class="page contact" id="contact" data-page="08">
     <video class="contact__video" autoplay muted loop playsinline preload="metadata" src="assets/contact_oiran.mp4"></video>
     <div class="contact__veil"></div>
     <div class="running-head">COLOPHON / CONTACT</div>
@@ -1692,7 +2080,7 @@
       </div>
       <p class="contact__statement">表現ではなく表現工学が、<br>私の仕事です。</p>
     </div>
-    <div class="page-no">012</div>
+    <div class="page-no">014</div>
   </section>
 </main>
 
